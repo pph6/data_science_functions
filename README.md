@@ -34,4 +34,11 @@ RMSE (Root Mean Squared Error) is a common measure guaging the accuracy of machi
 measurements in column 
     - The number of rows of this input array should be flexible/up to the user.
 
-## 4. 
+## 4. Empirical sample bounds: `empiricalSampleBounds()`
+After resampling (drawing with replacement) from a sample, we often end up with a distribution. This is useful because it is quite common to then compare a null (or noise) distribution with a distribution that contains the signal. In order to do that, it is often necessary to determine the bounds of that empirical distribution – to assess what proportion of the sample is in the tails of the distribution (commonly used bounds are 50, 95 and 99).
+
+- Function Parameters:
+  - Take in 2 input arguments, in this order: 1) A variable that represents the dataset/distribution/sample. 2) The probability mass bounds that define the center of the distribution (e.g. 95, 99 or 50) – in contrast to the tails.
+  - The function should compute and return the upper bound (where the right tail starts) and the lower bound (where the left tail starts).
+  - Assumptions: The first input argument can be anything – a list, dataframe or numpy array containing real numbered values, but I have assumed it to be a 1D numpy array with arbitrary length, by default. The second input argument should be a real number from 0.01 to 99.99 that determines the location of the bounds (where the tails start).
+  
